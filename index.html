@@ -1,0 +1,313 @@
+<html>
+
+<head>
+	<title>SiMBA-LDM_supplementary</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <meta name="theme-color" content="#563d7c">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        audio {
+            width: 250px;
+        }
+    </style>
+</head>
+
+<body bgcolor="#FFFFFF" link="#000000" vlink="#000000" alink="#000000">
+
+    <div class="text-center">
+        <br>
+        <!-- Title -->
+        <div class="text-wrap" width="200px">
+            <font face="helvetica , ariel, &#39;sans serif&#39;" size="6">
+                <br><b>SIMBA-LDM:</br>LOW-COST TRAINING FOR TEXT-TO-MUSIC VIA SIMBA AND LATENT DIFFUSION</b><br><br>
+            </font>
+        </div>
+
+        <!-- Author info -->
+        <p style="font-size: 1.3em; margin-bottom: 0;">
+            anonymous
+        </p>
+        <p style="margin-top: 0;">
+            anonymous@example.com<br>
+        </p>
+
+        <!-- Click buttons -->
+        <!-- <div class="m-5">
+            <a class="btn btn-outline-dark" href="https://arxiv.org/abs/2311.07069" type="button"><i
+                    class="bi bi-newspaper"></i> Paper</a>
+            <a class="btn btn-outline-dark" href="https://youtu.be/QVr-S-DyccU" type="button"> <i
+                    class="bi bi-camera-reels"></i> Video</a>
+        </div> -->
+        <div class="container mt-4" style="max-width: 1000px;">
+            <div class="container">
+                <h1 class="text-justify">Supplementary</h1>
+                <hr>
+
+                <div class="section text-justify">
+                    <!-- Description -->
+                    <h2>The comparison with Cross transformer</h2>
+                    This section shows the generated audio from 4 different configurations.<br>
+                    (1) One stage (using only &kappa;=1 codec layers)<br>
+                        (1-1)Prefix SiMBA<br>
+                        (1-2)Cross Transformer<br>
+                    (2) Two stage<br>
+                        (2-1)Prefix SiMBA + LDM<br>
+                        (2-2)Cross Transformer + LDM<br>
+                    
+                    We train the Prefix SiMBA and Cross Transformer in (1) with the same training data and same training steps, 
+                    and then use the trained model to generate rudimentary audio samples. And further use the generated results from (1) 
+                    passing to the second stage model, LDM, to generate intact audio samples.<br>
+                    
+                    The generated audio samples from (1) are rudimentary, which means those are reconstructed by only the first layer of the codec(&kappa;=1).<br>
+                    The generated audio samples from (2) are intact audio samples coresponding to the full codec(&kappa;=9).<br> 
+                    The results of (1-2) and (2-2) are not shown in the paper and the previous demo page, because the audio quality 
+                    is not good enough to be presented. However, to response the comments from reviewers, we still include the generated 
+                    results here with a comparison table for completeness.<br>
+                    <img src="img/table.png" alt="table">
+                    <!-- Table -->
+                    <table class="table table-sm text-center" style="vertical-align: middle;">
+                        <tbody>
+                            <tr>
+                                <td colspan="5">
+                                    <h5 class="text-center">Sampled at 85k Training Steps</h5>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td colspan="1">
+                                        <h5 class="text-center"> </h5>
+                                    </td>
+                                    <td colspan="2">
+                                        <h5 class="text-center">One stage</h5>
+                                    </td>
+                                    <td colspan="2">
+                                        <h5 class="text-center">Two stage</h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <h5 class="text-center">Text Prompt</h5>
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <h5 class="text-center">Prefix SiMBA</h5>
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <h5 class="text-center">Cross Transformer</h5>
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <h5 class="text-center">Prefix SiMBA + LDM</h5>
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <h5 class="text-center">Cross Transformer + LDM</h5>
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <p>This is a traditional, cultural South Asian song. It is upbeat, vibrant, cheerful. The lead singer sings in a fast paced and rhythmic way, connecting many words within a short span of musical time. The rest of the performers are clapping their hands, playing the tabla. This is a live performance.
+                                            </p>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <audio controls>
+                                                <source src="audio/one_stage/simba/0fiOM---7QI.wav" type="audio/mp3">
+                                            Your browser does not support the audio element.
+                                            </audio>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <audio controls>
+                                                <source src="audio/one_stage/transformer/0fiOM---7QI.wav" type="audio/mp3">
+                                            Your browser does not support the audio element.
+                                            </audio>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <audio controls>
+                                                <source src="audio/two_stage/simba/0fiOM---7QI.wav" type="audio/mp3">
+                                            Your browser does not support the audio element.
+                                            </audio>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <audio controls>
+                                                <source src="audio/two_stage/transformer/0fiOM---7QI.wav" type="audio/mp3">
+                                            Your browser does not support the audio element.
+                                            </audio>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <p>This song contains several drum hits and percussive instruments playing a fast paced rhythm that motivates dancing along. An e-bass is bringing the low end supporting the drums. Cuatro guitars are strumming chords as a rhythmic addition. Trumpets are playing a loud and catchy melody. Some of the musical elements are slightly panned to the left and right side of the speakers. This song may be playing at a cheerful event.
+                                            </p>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <audio controls>
+                                                <source src="audio/one_stage/simba/1j4rFfU5XKQ.wav" type="audio/mp3">
+                                            Your browser does not support the audio element.
+                                            </audio>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <audio controls>
+                                                <source src="audio/one_stage/transformer/1j4rFfU5XKQ.wav" type="audio/mp3">
+                                            Your browser does not support the audio element.
+                                            </audio>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <audio controls>
+                                                <source src="audio/two_stage/simba/1j4rFfU5XKQ.wav" type="audio/mp3">
+                                            Your browser does not support the audio element.
+                                            </audio>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <audio controls>
+                                                <source src="audio/two_stage/transformer/1j4rFfU5XKQ.wav" type="audio/mp3">
+                                            Your browser does not support the audio element.
+                                            </audio>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <p>The song is an instrumental. The song is medium fast tempo with African folk drumming rhythm, string section, violins playing, horns and woodwinds playing in harmony. The song is adventurous and exciting.  The song is an advertisement jingle for a DSLR camera complete with camera click tones. The audio is of poor quality.
+                                            </p>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <audio controls>
+                                                <source src="audio/one_stage/simba/2ZfthfWQowE.wav" type="audio/mp3">
+                                            Your browser does not support the audio element.
+                                            </audio>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <audio controls>
+                                                <source src="audio/one_stage/transformer/2ZfthfWQowE.wav" type="audio/mp3">
+                                            Your browser does not support the audio element.
+                                            </audio>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <audio controls>
+                                                <source src="audio/two_stage/simba/2ZfthfWQowE.wav" type="audio/mp3">
+                                            Your browser does not support the audio element.
+                                            </audio>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <audio controls>
+                                                <source src="audio/two_stage/transformer/2ZfthfWQowE.wav" type="audio/mp3">
+                                            Your browser does not support the audio element.
+                                            </audio>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <p>The low quality recording features a Champeta song that consists of wooden percussive elements, electric guitar solo melody, funky electric rhythm guitar chords, shimmering shakers and hi hats and smooth bass guitar. It sounds funky and like something you would dance to in a bar.
+                                            </p>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <audio controls>
+                                                <source src="audio/one_stage/simba/2xGRCsW6-Bk.wav" type="audio/mp3">
+                                            Your browser does not support the audio element.
+                                            </audio>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <audio controls>
+                                                <source src="audio/one_stage/transformer/2xGRCsW6-Bk.wav" type="audio/mp3">
+                                            Your browser does not support the audio element.
+                                            </audio>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <audio controls>
+                                                <source src="audio/two_stage/simba/2xGRCsW6-Bk.wav" type="audio/mp3">
+                                            Your browser does not support the audio element.
+                                            </audio>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <audio controls>
+                                                <source src="audio/two_stage/transformer/2xGRCsW6-Bk.wav" type="audio/mp3">
+                                            Your browser does not support the audio element.
+                                            </audio>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <p>This is an instrumental backing track of a jazz music piece. There is no singer in this version of the piece. The piano is playing the chords in the minor key while a bass guitar can be heard playing a walking bass line. The rhythmic background consists of acoustic drums playing a jazz swing beat. The atmosphere is delicate. This piece could be playing in the background at a coffee shop. It could be used in the soundtrack of a romantic movie.
+                                            </p>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <audio controls>
+                                                <source src="audio/one_stage/simba/3TQmts_MxyQ.wav" type="audio/mp3">
+                                            Your browser does not support the audio element.
+                                            </audio>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <audio controls>
+                                                <source src="audio/one_stage/transformer/3TQmts_MxyQ.wav" type="audio/mp3">
+                                            Your browser does not support the audio element.
+                                            </audio>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <audio controls>
+                                                <source src="audio/two_stage/simba/3TQmts_MxyQ.wav" type="audio/mp3">
+                                            Your browser does not support the audio element.
+                                            </audio>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <audio controls>
+                                                <source src="audio/two_stage/transformer/3TQmts_MxyQ.wav" type="audio/mp3">
+                                            Your browser does not support the audio element.
+                                            </audio>
+                                        </td>
+                                    </tr>
+                                    
+                            
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Add JavaScript to toggle the collapsible content
+        var buttons = document.querySelectorAll(".collapsible-button");
+        buttons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        });
+
+        const audioElements = document.querySelectorAll('audio');
+
+        // 為每個 audio 元素添加播放事件監聽器
+        audioElements.forEach(audio => {
+            audio.addEventListener('play', () => {
+                // 當某個音檔開始播放時，暫停其他所有音檔
+                audioElements.forEach(otherAudio => {
+                    if (otherAudio !== audio && !otherAudio.paused) {
+                        otherAudio.pause();
+                        // 可選：otherAudio.currentTime = 0; // 重置其他音檔到開頭
+                    }
+                });
+            });
+        });
+        
+
+    </script>
+
+</body>
+
+</html>
